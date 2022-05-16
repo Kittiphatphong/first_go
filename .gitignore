@@ -9,5 +9,5 @@
 .idea/
 vendor
 docs
-Makefile/
-config.yaml/
+Makefile
+config.yaml
