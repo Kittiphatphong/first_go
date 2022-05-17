@@ -14,6 +14,7 @@ type UserController interface {
 type userController struct {
 	userServices user_service.UserServices
 }
+
 func (u userController) GetUserCtrl(ctx *fiber.Ctx) error {
 	paramsInt, err := ctx.ParamsInt("id")
 	if err != nil {
