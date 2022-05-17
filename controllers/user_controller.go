@@ -14,19 +14,6 @@ type UserController interface {
 type userController struct {
 	userServices user_service.UserServices
 }
-
-// GetUserCtrl func
-// @Summary get one user by id
-// @Description get one user by id
-// @Tags USER
-// @Accept json
-// @Produce json
-// @Param id path int true "id"
-// @Security ApiKeyAuth
-// @Security Authorization
-// @Success 200 {object} user_service.UserResponse
-// @Failure 402 {object} controllers.ErrorResponse
-// @Router /api/v1/admin/oauth/user/get-one/{id} [get]
 func (u userController) GetUserCtrl(ctx *fiber.Ctx) error {
 	paramsInt, err := ctx.ParamsInt("id")
 	if err != nil {
@@ -40,16 +27,6 @@ func (u userController) GetUserCtrl(ctx *fiber.Ctx) error {
 	}
 	return NewSuccessResponse(ctx, getUserByIDSvc)
 }
-
-// UserLoginCtrl UserLogin func
-// @Summary login user
-// @Description login user with email and password
-// @Tags USER
-// @Accept json
-// @Produce json
-// @Param UserLoginRequest body user_service.UserLoginRequest{} true "UserLoginRequest"
-// @Failure 402 {object} controllers.ErrorResponse
-// @Router /api/v1/admin/user/login [post]
 func (u userController) UserLoginCtrl(ctx *fiber.Ctx) error {
 	userRequest := user_service.UserLoginRequest{}
 	err := ctx.BodyParser(&userRequest)
@@ -64,17 +41,6 @@ func (u userController) UserLoginCtrl(ctx *fiber.Ctx) error {
 	return NewSuccessResponse(ctx, userLoginResponse)
 
 }
-
-// CreateUserCtrl CreateUser func
-// @Summary create user
-// @Description create user with fullname, email, password
-// @Tags USER
-// @Accept json
-// @Produce json
-// @Param UserRequest body user_service.UserRequest true "UserRequest"
-// @Success 201 {object} user_service.UserResponse
-// @Failure 402 {object} controllers.ErrorResponse
-// @Router /api/v1/admin/user/create [post]
 func (u userController) CreateUserCtrl(ctx *fiber.Ctx) error {
 	userRequest := user_service.UserRequest{}
 	err := ctx.BodyParser(&userRequest)

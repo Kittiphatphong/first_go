@@ -3,7 +3,6 @@ module clickcash_backend
 go 1.17
 
 require (
-	github.com/arsmn/fiber-swagger/v2 v2.31.1
 	github.com/dgrijalva/jwt-go v3.2.0+incompatible
 	github.com/gofiber/fiber/v2 v2.33.0
 	github.com/gofiber/jwt/v2 v2.2.7
